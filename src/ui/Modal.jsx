@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { useOutsideClick } from "../hooks/useOutsideClick";
+
 const StyledModal = styled.div`
   position: fixed;
   top: 50%;
