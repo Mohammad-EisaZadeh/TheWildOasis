@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -38,6 +39,7 @@ function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
   function handleClick(value) {
+    if (searchParams.get("page")) searchParams.set("page", 1);
     searchParams.set(filterField, value);
     setSearchParams(searchParams);
   }
