@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -14,7 +14,11 @@ const Main = styled.main`
   overflow: scroll;
   background-color: var(--color-grey-50);
   padding: 4rem 4.8rem 6.4rem;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;

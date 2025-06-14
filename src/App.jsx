@@ -16,7 +16,7 @@ import { Toaster } from "react-hot-toast";
 import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
-import { DarkModeProvider } from "./context/DarkModeContext";
+import { DarkModeProvider, useDarkMode } from "./context/DarkModeContext";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -25,18 +25,16 @@ const queryClient = new QueryClient({
   },
 });
 function App() {
+  const { isDarkMode } = useDarkMode();
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
           <Route
             element={
               <ProtectedRoute>
-                <DarkModeProvider>
-                  <AppLayout />
-                </DarkModeProvider>
+                <AppLayout />
               </ProtectedRoute>
             }
           >
@@ -69,8 +67,10 @@ function App() {
             fontSize: "16px",
             maxWidth: "500px",
             padding: "16px 24px",
-            backgroundColor: "var(--color-gray-0)",
-            color: "(--color-gray-700)",
+            backgroundColor: isDarkMode
+              ? "var(--color-grey-900)"
+              : "var(--color-grey-0)",
+            color: "(--color-grey-700)",
           },
         }}
       />
