@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Heading from "./Heading";
-import GlobalStyles from "../styles/globalStyles";
+import GlobalStyles from "../styles/GlobalStyles";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
