@@ -49,7 +49,7 @@ function TodayActivity() {
         activities?.length ? (
           <TodayList></TodayList>
         ) : (
-          <NoActivity></NoActivity>
+          <NoActivity>No Activity today ...</NoActivity>
         )
       ) : (
         <Spinner />
