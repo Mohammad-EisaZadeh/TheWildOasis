@@ -24,6 +24,7 @@ const queryClient = new QueryClient({
   },
 });
 function App() {
+  const mmd = 0;
   const { isDarkMode } = useDarkMode();
   return (
     <QueryClientProvider client={queryClient}>
