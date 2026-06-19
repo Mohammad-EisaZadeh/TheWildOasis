@@ -94,14 +94,19 @@ This app expects a Supabase project with:
 - **Database tables** — `cabins`, `bookings`, `guests`, `settings`, and related schema
 - **Storage bucket** — `cabins` (for cabin images) and `avatars` (for user profile photos)
 
-Supabase credentials are configured in `src/services/supabase.js`. For production deployments, move these to environment variables:
+Supabase credentials are loaded from environment variables (never commit real keys to git):
 
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```bash
+cp .env.example .env
 ```
 
-> **Note:** The course provides a pre-built Supabase project and seed data scripts in `src/data/` for populating the database with sample cabins, guests, and bookings.
+Then fill in your values in `.env`:
+
+
+
+> **Note:** The anon key is safe to use in the browser — Supabase security relies on Row Level Security (RLS) policies on the server. Still, keep credentials in `.env` so they are not checked into version control. If a key was ever committed, rotate it in the [Supabase dashboard](https://supabase.com/dashboard) under **Project Settings → API**.
+
+> The course provides a pre-built Supabase project and seed data scripts in `src/data/` for populating the database with sample cabins, guests, and bookings.
 
 ---
 

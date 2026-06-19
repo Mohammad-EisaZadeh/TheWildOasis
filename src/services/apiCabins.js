@@ -1,8 +1,10 @@
 import supabase from "./supabase";
 import { supabaseUrl } from "../services/supabase";
 
-export async function getCabins() {
+export async function getCabins() { 
+
   const { data, error } = await supabase.from("cabins").select("*");
+  console.log(data)
   if (error) {
     console.error(error);
     throw new Error("Cabins could not be loaded");
@@ -16,9 +18,8 @@ export async function createEditCabins(newCabin, id) {
   const imageName = `${Date.now()}-${newCabin.image.name}`.replaceAll("/", "");
 
   const imagePath = hasImagePath
-    ? newCabin.image
-    : `${supabaseUrl}/storage/v1/object/public/cabin-images//${imageName}`;
-
+  ? newCabin.image
+  : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
   //1.Create/Edit Cabin
   let query = supabase.from("cabins");
   // A) Create
